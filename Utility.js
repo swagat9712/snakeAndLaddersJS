@@ -56,8 +56,8 @@ export default class SnakeandLadder {
                     count_dice1 = 0;
                 }
                 if (current_position >= final_position) {
-                    //console.log("player1 won!");
-                    //console.log("Player1 won with dice count:" + count_dice1);
+                    console.log("player1 won!");
+                    console.log("Player1 won with dice count:" + count_dice1);
                     current_position = 0;
                     break;
                 }
