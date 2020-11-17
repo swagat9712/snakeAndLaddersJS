@@ -1,6 +1,9 @@
-import * as Utility from "./Utility.js";
-import SnakeandLadder from "./UtilitySnakeAndLaders";
+let utility = require("./Utility");
 console.log("Welcome to Sanke and Ladders!");
-let SnakeAndLadders = Utility.default;
-new SnakeandLadder();
-Utility.playerPosition1();
+
+function result(){
+    utility.playerPosition1();
+    utility.playerPosition2();
+    utility.calculateWin();
+}
+result();
