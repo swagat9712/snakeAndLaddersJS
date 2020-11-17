@@ -66,4 +66,36 @@ export default class SnakeandLadder {
             console.log("Error:" + e);
         }
     }
+    // for player2 to count the number of dice played and to iterate till final position 100 is reached//  
+    playerposition2() {
+        try {
+            while (current_position < final_position) {
+                console.log("Player2:");
+                this.checkOption();
+                count_dice2++;
+                //if current position less then or equals to 0 then count restart//
+                if (current_position == 0) {
+                    console.log("Restart! position less the 0 for player2");
+                    count_dice2 = 0;
+                }
+                if (current_position >= final_position) {
+                    //console.log("player2 won!");
+                    console.log("Player2 won with dice count:" + count_dice2);
+                    break;
+                }
+            }
+
+        }
+        catch (e) {
+            console.log("Error:" + e);
+        }
+    }
+    calculateWin(){
+        if(count_dice1 < count_dice2){
+            console.log("Player1 won with dice count:" + count_dice1);
+        }
+        if(count_dice2 < count_dice1){
+            console.log("Player2 won with dice count:" + count_dice2);
+        }
+    }
 }
