@@ -1,8 +1,11 @@
-export let current_position = 0;
-export let count_dice1 = 0;
-export let count_dice2 = 0;
-export const final_position = 100;
-export default class SnakeandLadder {
+
+class SnakeandLadder {
+    constructor(){
+        this.current_position = 0;
+        this.count_dice1 = 0;
+        this.count_dice2 = 0;
+        this.final_position= 100;
+    }
     //for taking random value from 1 to 6//
     rollDice() {
         return (Math.ceil(Math.random() * 10) % 6 + 1);
@@ -18,23 +21,23 @@ export default class SnakeandLadder {
                     break;
                 case 2:
                     console.log("Play Ladder");
-                    if (current_position < final_position) {
-                        current_position = current_position + dice_played;
-                        console.log("current position: " + current_position);
+                    if (this.current_position < this.final_position) {
+                        this.current_position = this.current_position + dice_played;
+                        console.log("current position: " + this.current_position);
                     }
                     else {
-                        count_dice1 = 0;
-                        console.log("current position: " + current_position);
+                        this.count_dice1 = 0;
+                        console.log("current position: " + this.current_position);
                     }
                     break;
                 case 3:
                     console.log("Snake");
-                    if (current_position > 0) {
-                        current_position = current_position - dice_played;
-                        console.log("current position: " + current_position);
+                    if (this.current_position > 0) {
+                        this.current_position = this.current_position - dice_played;
+                        console.log("current position: " + this.current_position);
                     }
                     else {
-                        current_position = 0;
+                        this.current_position = 0;
                     }
                     break;
                 default:
@@ -46,19 +49,19 @@ export default class SnakeandLadder {
     }
     playerPosition1() {
         try {
-            while (current_position < final_position) {
+            while (this.current_position < this.final_position) {
                 console.log("Player1:");
                 this.checkOption();
-                count_dice1++;
+                this.count_dice1++;
                 //if current position less then or equals to 0 then count restart//
-                if (current_position == 0) {
+                if (this.current_position == 0) {
                     console.log("Restart! position less the 0 for playe1");
-                    count_dice1 = 0;
+                    this.count_dice1 = 0;
                 }
-                if (current_position >= final_position) {
+                if (this.current_position >= this.final_position) {
                     //console.log("player1 won!");
-                    //console.log("Player1 won with dice count:" + count_dice1);
-                    current_position = 0;
+                    console.log("Player1 won with dice count:" + this.count_dice1);
+                    this.current_position = 0;
                     break;
                 }
             }
@@ -66,4 +69,38 @@ export default class SnakeandLadder {
             console.log("Error:" + e);
         }
     }
+    // for player2 to count the number of dice played and to iterate till final position 100 is reached//  
+    playerposition2() {
+        try {
+            while (this.current_position < this.final_position) {
+                console.log("Player2:");
+                this.checkOption();
+                this.count_dice2++;
+                //if current position less then or equals to 0 then count restart//
+                if (this.current_position == 0) {
+                    console.log("Restart! position less the 0 for player2");
+                    this.count_dice2 = 0;
+                }
+                if (this.current_position >= this.final_position) {
+                    //console.log("player2 won!");
+                    console.log("Player2 won with dice count:" + this.count_dice2);
+                    break;
+                }
+            }
+
+        }
+        catch (e) {
+            console.log("Error:" + e);
+        }
+    }
+    calculateWin(){
+        if(this.count_dice1 < this.count_dice2){
+            console.log("Player1 won with dice count:" + this.count_dice1);
+        }
+        if(this.count_dice2 < this.count_dice1){
+            console.log("Player2 won with dice count:" + this.count_dice2);
+        }
+    }
+    
 }
+module.exports = new SnakeandLadder();
