@@ -1,3 +1,6 @@
+import * as Utility from "./Utility.js";
+import SnakeandLadder from "./UtilitySnakeAndLaders";
 console.log("Welcome to Sanke and Ladders!");
-let current_position = 0;
-let count_dice1 = 0;
+let SnakeAndLadders = Utility.default;
+new SnakeandLadder();
+Utility.playerPosition1();
